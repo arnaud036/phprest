@@ -10,10 +10,6 @@ abstract class BaseController {
         $this->httpResponse = $httpResponse;
     }
     
-    public function authenticate() {
-        return true;
-    }
-    
 }
 
 ?>
