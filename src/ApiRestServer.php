@@ -54,11 +54,11 @@ class ApiRestServer {
     
     private function getControllerClass($name) { 
         $expectedControllerClass = $name . 'Controller';
-        foreach (glob(APP_PATH . '/controllers/*.php', GLOB_NOSORT) as $filename) {
+        foreach (glob(APP_PATH . '/../controller/*.php', GLOB_NOSORT) as $filename) {
             $controllerName = basename($filename, '.php') ;
             if (strnatcasecmp($controllerName, $expectedControllerClass) == 0) {
                 //TODO: Use autoload.
-                require_once APP_PATH . '/controllers/' . basename($filename);
+                require_once APP_PATH . '/../controller/' . basename($filename);
                 return $controllerName;
             }
         }
