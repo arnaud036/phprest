@@ -2,7 +2,6 @@
 
 require_once 'HttpRequest.php';
 require_once 'HttpResponse.php';
-require_once 'Authentication.php';
 
 class ApiRestServer {
     
@@ -15,12 +14,7 @@ class ApiRestServer {
     }
     
     public function processRequest() {
-        
-        //TODO: Strategy to authenticate should be in config file.
-        $authenticator = new Authenticator(new BasicAuthentication());
-        
-        if (!$authenticator->authenticate()) HttpResponse::sendResponse(401, 'Unauthorized');
-        
+      
         if (isset($this->httpRequest->parameters['controller']) && !empty($this->httpRequest->parameters['controller'])) {
             $controllerName = $this->httpRequest->parameters['controller'];
             unset($this->httpRequest->parameters['controller']);
